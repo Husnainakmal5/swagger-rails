@@ -1,0 +1,56 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/books":
+    get:
+      summary: Book Listing
+      tags:
+      - Books
+      parameters:
+      - name: encounter
+        in: query
+        schema:
+          type: object
+          properties:
+            user_id:
+              type: integer
+            book_id:
+              type: integer
+          required:
+          - user_id
+          - book_id
+      responses:
+        '200':
+          description: fetch data
+  "/api/v1/encounters":
+    post:
+      summary: Create an Encounter
+      tags:
+      - Encounters
+      parameters: []
+      responses:
+        '201':
+          description: encounter created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                patient_id:
+                  type: integer
+                provider_id:
+                  type: integer
+              required:
+              - patient_id
+              - provider_id
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
