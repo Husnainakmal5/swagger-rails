@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :high_scores
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :samples
       resources :books
+      resources :high_scores
     end
   end
   # Defines the root path route ("/")

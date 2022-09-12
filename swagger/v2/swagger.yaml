@@ -1,10 +1,10 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
-  version: v1
+  title: API V2
+  version: v2
 paths:
-  "/api/v1/books":
+  "/api/v2/books":
     get:
       summary: Book Listing
       tags:
@@ -25,7 +25,7 @@ paths:
       responses:
         '200':
           description: fetch data
-  "/api/v1/encounters":
+  "/api/v2/encounters":
     post:
       summary: Create an Encounter
       tags:
@@ -49,40 +49,26 @@ paths:
               required:
               - patient_id
               - provider_id
-  "/api/v1/high_scores":
+  "/api/v2/high_scores":
     get:
-      summary: High Score Listing
+      summary: High Score Listing 2
       tags:
       - High Score
       responses:
         '200':
           description: fetch data
-  "/api/v1/high_scores/{id}":
+      parameters:
+      - name: id
+        in: query
+        schema:
+          type: string
+  "/api/v2/high_scores/{id}":
     get:
       summary: High Score Show
       tags:
       - High Score
       parameters:
       - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Get single record
-  "/api/v1/high_scores/{id}/{nameId}":
-    get:
-      summary: High Score Show
-      tags:
-      - High Score
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: nameId
         in: path
         required: true
         schema:

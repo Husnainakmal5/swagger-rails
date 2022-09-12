@@ -4,10 +4,13 @@ class Api::V1::HighScoresController < ApplicationController
   # GET /high_scores or /high_scores.json
   def index
     @high_scores = HighScore.all
+
+    render :json => @high_scores
   end
 
   # GET /high_scores/1 or /high_scores/1.json
   def show
+    render :json => @high_score
   end
 
   # GET /high_scores/new
